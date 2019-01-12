@@ -11,14 +11,14 @@ package gametebaknama.hewan;
  */
 import java.util.*;
 
-class Node {
+class BNode {
 
     Node parent;
     Node left;
     Node right;
     int indeksHuruf;
 
-    Node(int new_indeks) { //constructur //parameter
+    BNode(int new_indeks) { //constructur //parameter
         this.indeksHuruf = new_indeks; //indeksHuruf di isi new_indeks
         this.parent = null; //parent di isi null
         this.left = null;
@@ -51,11 +51,11 @@ class Node {
     }
 }
 
-class BinaryTree {
+class bBinaryTree {
 
     Node root;
 
-    BinaryTree() { //constructur di set null
+    bBinaryTree() { //constructur di set null
         this.root = null;
     }
 
@@ -97,7 +97,83 @@ class BinaryTree {
         }
         return false;
     }
-        int getInput() {
+}
+
+public class ProjectUAS {
+
+    static ArrayList<String> kata = new ArrayList<>();
+
+    String[] bankKata = {"Anjing", "Banteng", "Lebah", "Belalang", "Kalajengking", "Sapi", "Zebra", "Tongkol", "Lebah", "Nyamuk", "Paus", "Kadal", "Badak", "Kuda", "Tikus", "Rusa", "Gajah", "Ular", "Macan", "Kadal", "Unta", "Semut", "Katak", "Harimau", "Buaya", "Babi"};
+    static String kataAcak = ""; //diinisialisasi
+    char[] arrayKata;
+    char[] abjad = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    int[] indeksHuruf;
+
+    int nyawa = 3;
+
+    char[] kataTebakan;
+    String tebakanFinal = "";
+    static BinaryTree bt = new BinaryTree();
+    int counter = 0; //menghitung banyak percobaan
+
+    void rubahHurufkeIndeks(String kata) {
+        char[] huruf = new char[kata.length()];
+        indeksHuruf = new int[huruf.length];
+
+        for (int i = 0; i < kata.length(); i++) {
+            huruf[i] = kata.toUpperCase().charAt(i); //memecah huruf
+            //System.out.println(huruf[i]);
+        }
+
+        for (int j = 0; j < huruf.length; j++) {
+            for (int k = 0; k < abjad.length; k++) {
+                if (huruf[j] == abjad[k]) {
+                    indeksHuruf[j] = k + 1;
+                    //System.out.println(indeksHuruf[j]);
+                }
+            }
+        }
+    }
+
+    void pushHurufkeBinaryTree() {
+        for (int i = 0; i < indeksHuruf.length; i++) {
+            bt.push(new Node(indeksHuruf[i]));
+        }
+    }
+
+    void isiList() {
+        for (int i = 0; i < bankKata.length; i++) {
+            kata.add(bankKata[i]);
+        }
+    }
+
+    void acakKata() {
+        Random rd = new Random();
+
+        int acak = rd.nextInt(kata.size()) + 1;
+        kataAcak = kata.get(acak - 1);
+
+    }
+
+    boolean cekSlotPenuh() {
+        return counter == kataAcak.length();
+    }
+
+    void mulaiTebakan() {
+        isiList();
+        acakKata();
+        //System.out.println(kata);
+        //System.out.println("acak: " + kataAcak);
+        rubahHurufkeIndeks(kataAcak);
+        pushHurufkeBinaryTree();
+        kataTebakan = new char[kataAcak.length()];
+        arrayKata = new char[kataAcak.length()];
+        for (int i = 0; i < arrayKata.length; i++) {
+            arrayKata[i] = kataAcak.toUpperCase().charAt(i);
+        }
+    }
+
+    int getInput() {
         Scanner in = new Scanner(System.in);
         int choice = 0;
         boolean validInput = false;
@@ -214,9 +290,8 @@ class BinaryTree {
     }
 
     public static void main(String[] args) {
-        ProjectUAS2 p = new ProjectUAS2();
+        ProjectUAS p = new ProjectUAS();
         p.menuUtama();
     }
-
 
 }
