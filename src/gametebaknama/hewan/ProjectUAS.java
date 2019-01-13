@@ -137,7 +137,7 @@ public class ProjectUAS {
 
     void pushHurufkeBinaryTree() {
         for (int i = 0; i < indeksHuruf.length; i++) {
-            bt.push(new Node(indeksHuruf[i]));
+            bt.push(new BNode(indeksHuruf[i]));
         }
     }
 
@@ -158,7 +158,18 @@ public class ProjectUAS {
     boolean cekSlotPenuh() {
         return counter == kataAcak.length();
     }
-
+void petunjuk() {
+    System.out.println(" petunjuk permainan ");
+    System.out.println(" Game tebak nama hewan ini adalah game yang berhubungan seputar nama - nama hewan yang ada di dunia.\n"
+            +" dimana anda semua yang bermain anda disuruh untuk menebak huruf per huruf yang ada di dalam slot yang sudah kami sediakan\n"
+            + "nuntuk cara bermainya : 1. silahkan pilih 1 untuk main\n"
+            + "                        2. pilih 2 petunjuk\n"
+            + "                        3. pilih 3 untuk keluar dari perimainan\n"
+            + "                       jika kalian pilih main disitu sudah di siapkan slot tugas anda :\n"
+            + "                       pertama hitung jumlah slot tersebut dan mulai berfikir nama hewan apa yang sama dengan jumlah slot tersebut\n"
+            + "                       kedua pilihlah huruf vokal dulu agar kalian mudah untuk menebak nama hewan itu apa\n"
+            + "Terima Kasih Selamat Bermain");
+}
     void mulaiTebakan() {
         isiList();
         acakKata();
@@ -219,7 +230,7 @@ public class ProjectUAS {
                     System.out.println("\nHuruf sudah ada dalam slot.");
                 } else {
                     if (hurufTebakan == arrayKata[p]) {
-                        System.out.println("\nHuruf ada.");
+                        System.out.println("\nYeeeyy huruf kamu tebak ada .");
                         kataTebakan[p] = hurufTebakan;
                         counter += 1;
                     }
@@ -227,16 +238,16 @@ public class ProjectUAS {
             }
             if (cekSlotPenuh()) {
                 tampilSlot();
-                System.out.println("Kamu menang.\n");
+                System.out.println("yeeeeeyyy selamat ya kamu menang .\n");
                 reset();
                 menuUtama();
             }
         } else {
-            System.out.println("\nHuruf tidak ada. Nyawa dikurangi.");
+            System.out.println("\nyaahhh payah huruf yang kamu tebak tidak ada. Nyawa kamu berkurang.");
             nyawa -= 1;
             if (nyawa == 0) {
-                System.out.println("Kamu kalah. Coba lagi.");
-                System.out.println("Jawaban: " + kataAcak + "\n");
+                System.out.println("payahhh sekali pengetahuanmu tentang nama hewan kamu kalah. Coba lagi.");
+                System.out.println("Padahal Jawabanya: " + kataAcak + "\n");
                 reset();
                 menuUtama();
             }
@@ -261,6 +272,8 @@ public class ProjectUAS {
                 mainMenu();
                 break;
             case 2:
+                petunjuk();
+                menuUtama();
                 break;
             case 3:
                 System.out.println("Terima kasih sudah bermain.");
