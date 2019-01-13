@@ -13,9 +13,9 @@ import java.util.*;
 
 class BNode {
 
-    Node parent;
-    Node left;
-    Node right;
+    BNode parent;
+    BNode left;
+    BNode right;
     int indeksHuruf;
 
     BNode(int new_indeks) { //constructur //parameter
@@ -25,7 +25,7 @@ class BNode {
         this.right = null;
     }
 
-    void set_parent(Node other) { //method //parameter
+    void set_parent(BNode other) { //method //parameter
         this.parent = other;
         if (other != null) {
             if (other.indeksHuruf > this.indeksHuruf) {
@@ -36,14 +36,14 @@ class BNode {
         }
     }
 
-    void set_left(Node other) {
+    void set_left(BNode other) {
         left = other;
         if (other != null) {
             other = parent;
         }
     }
 
-    void set_right(Node other) {
+    void set_right(BNode other) {
         right = other;
         if (other != null) {
             other = parent;
@@ -53,17 +53,17 @@ class BNode {
 
 class bBinaryTree {
 
-    Node root;
+    BNode root;
 
     bBinaryTree() { //constructur di set null
         this.root = null;
     }
 
-    void push(Node new_node) {
+    void push(BNode new_node) {
         if (root == null) {
             root = new_node;
         } else {
-            Node current = root;
+            BNode current = root;
             while (current != null) {
                 if (new_node.indeksHuruf > current.indeksHuruf) {
                     if (current.right == null) {
@@ -85,7 +85,7 @@ class bBinaryTree {
     }
 
     boolean cari(int indeks) { //proses bst
-        Node current = root;
+        BNode current = root;
         while (current != null) {
             if (current.indeksHuruf == indeks) {
                 return true;
@@ -113,7 +113,7 @@ public class ProjectUAS {
 
     char[] kataTebakan;
     String tebakanFinal = "";
-    static BinaryTree bt = new BinaryTree();
+    static bBinaryTree bt = new bBinaryTree();
     int counter = 0; //menghitung banyak percobaan
 
     void rubahHurufkeIndeks(String kata) {
