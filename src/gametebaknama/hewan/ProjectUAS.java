@@ -158,18 +158,20 @@ public class ProjectUAS {
     boolean cekSlotPenuh() {
         return counter == kataAcak.length();
     }
-void petunjuk() {
-    System.out.println(" petunjuk permainan ");
-    System.out.println(" Game tebak nama hewan ini adalah game yang berhubungan seputar nama - nama hewan yang ada di dunia.\n"
-            +" dimana anda semua yang bermain anda disuruh untuk menebak huruf per huruf yang ada di dalam slot yang sudah kami sediakan\n"
-            + "nuntuk cara bermainya : 1. silahkan pilih 1 untuk main\n"
-            + "                        2. pilih 2 petunjuk\n"
-            + "                        3. pilih 3 untuk keluar dari perimainan\n"
-            + "                       jika kalian pilih main disitu sudah di siapkan slot tugas anda :\n"
-            + "                       pertama hitung jumlah slot tersebut dan mulai berfikir nama hewan apa yang sama dengan jumlah slot tersebut\n"
-            + "                       kedua pilihlah huruf vokal dulu agar kalian mudah untuk menebak nama hewan itu apa\n"
-            + "Terima Kasih Selamat Bermain");
-}
+
+    void petunjuk() {
+        System.out.println(" ************************************petunjuk permainan************************************************************ ");
+        System.out.println(" Game tebak nama hewan ini adalah game yang berhubungan seputar nama - nama hewan yang ada di dunia.\n"
+                + " dimana anda semua yang bermain anda disuruh untuk menebak huruf per huruf yang ada di dalam slot yang sudah kami sediakan\n"
+                + " untuk cara bermainya : 1. silahkan pilih 1 untuk main\n"
+                + "                        2. pilih 2 petunjuk\n"
+                + "                        3. pilih 3 untuk keluar dari perimainan\n"
+                + "                       jika kalian pilih main disitu sudah di siapkan slot tugas anda :\n"
+                + "                       pertama hitung jumlah slot tersebut dan mulai berfikir nama hewan apa yang sama dengan jumlah slot tersebut\n"
+                + "                       kedua pilihlah huruf vokal dulu agar kalian mudah untuk menebak nama hewan itu apa\n"
+                + "Terima Kasih Selamat Bermain");
+    }
+
     void mulaiTebakan() {
         isiList();
         acakKata();
@@ -262,9 +264,11 @@ void petunjuk() {
     }
 
     void menuUtama() {
+        System.out.println("=============================== GAME TEBAK NAMA HEWAN =======================================");
         System.out.println("1. Main");
         System.out.println("2. Petunjuk");
         System.out.println("3. Keluar");
+        System.out.println("=============================================================================================");
         int pilihan = getInput();
         switch (pilihan) {
             case 1:
